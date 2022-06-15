@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap');
+
+body {
+    background-color: #dcfdae;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.titulo {
+    width: 70vw;
+    font-weight: 700;
+    font-size: 56px;
+    color: #75B79E;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.mesajogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    width: 85vw;
+}
+
+.card {
+    width: 117px;
+    height: 146px;
+    border: solid 1px #99CEA8;
+    border-radius: 5px;
+    margin: 0 20px 34px 20px;
+}
+
+.back-face {
+    background-color: #A7E9AF;
+}
+
+.back-face img {
+    width: 100px;
+    height: 100px;
+    margin: 24px 7px 22px 10px;
+}
+
+.escondido {
+    display: none;
+}
