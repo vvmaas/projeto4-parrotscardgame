@@ -1,8 +1,13 @@
+
 let cards = ["./fotos/bobrossparrot.gif", "./fotos/fiestaparrot.gif", "./fotos/explodyparrot.gif", "./fotos/metalparrot.gif","./fotos/revertitparrot.gif","./fotos/tripletsparrot.gif",  "./fotos/unicornparrot.gif"]
 let c_i = [0, 1, 2, 3, 4, 5, 6]
-
-let mesa = document.querySelector(".mesajogo")
+let numeroJogadas
 let numeroCartas
+
+let mesa = document.querySelector(".mesa")
+
+
+
 //
 
 function getNmrCards(){
@@ -46,16 +51,24 @@ function darCartas() {
 
     for(let i = 0; numeroCartas > i; i++){
 
-        mesa.innerHTML += `<div class="card" data-identifier="card">
-        <div class="back-face" data-identifier="back-face">
+        mesa.innerHTML += `<div onclick:"virarCarta(this)" class="card" data-identifier="card">
+        <div class="back-face escondido" data-identifier="back-face">
             <img src="./fotos/front.png" alt="">
         </div>
 
-        <div class="front-face escondido" data-identifier="front-face">
+        <div class="front-face" data-identifier="front-face">
             <img src="${cards[c_i_escolhido[i]]}" alt="">
         </div>`
     }
 }
 darCartas()
 
+//
+
+function virarCarta(element) {
+    let front_face = element.querySelector(".front-face")
+    let back_face = element.querySelector(".back-face")
+    back_face.classList.remove("escondido")
+    front_face.classList.add("escondido")
+}
 

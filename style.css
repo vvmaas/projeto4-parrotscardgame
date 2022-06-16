@@ -16,7 +16,7 @@ body {
     text-align: center;
 }
 
-.mesajogo {
+.mesa {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -31,6 +31,10 @@ body {
     border-radius: 5px;
     margin: 0 20px 34px 20px;
     overflow: hidden;
+}
+
+.card:hover {
+    cursor: pointer;
 }
 
 .back-face {
