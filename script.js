@@ -4,8 +4,8 @@ let c_i = [0, 1, 2, 3, 4, 5, 6]
 let numeroJogadas
 let numeroCartas
 
-let mesa = document.querySelector(".mesa")
-
+const mesa = document.querySelector(".mesa");
+let cartas_mesa;
 
 
 //
@@ -51,24 +51,24 @@ function darCartas() {
 
     for(let i = 0; numeroCartas > i; i++){
 
-        mesa.innerHTML += `<div onclick:"virarCarta(this)" class="card" data-identifier="card">
-        <div class="back-face escondido" data-identifier="back-face">
+        mesa.innerHTML += `<div onclick:"virarCarta(${i})" class="card" data-identifier="card">
+        <div class="back-face card-face" data-identifier="back-face">
             <img src="./fotos/front.png" alt="">
         </div>
 
-        <div class="front-face" data-identifier="front-face">
+        <div class="front-face card-face" data-identifier="front-face">
             <img src="${cards[c_i_escolhido[i]]}" alt="">
         </div>`
     }
+    cartas_mesa = document.querySelectorAll('.card');
 }
 darCartas()
 
 //
 
-function virarCarta(element) {
-    let front_face = element.querySelector(".front-face")
-    let back_face = element.querySelector(".back-face")
-    back_face.classList.remove("escondido")
-    front_face.classList.add("escondido")
+function virarCarta(cardindex) {
+    let back_face = cartas_mesa[cardindex].querySelector(".back-face card-face");
+    let front_face = cartas_mesa[cardindex].querySelector(".front-face card-face");
+    front_face.style.transform='rotateY(0deg)';
+    back_face.style.transform='rotateY(-180deg)';
 }
-
