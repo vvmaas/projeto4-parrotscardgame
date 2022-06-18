@@ -50,8 +50,7 @@ body {
 }
 
 .front-face {
-    background-color: #c2ebc6;
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
 }
 
 .card-face > img {
@@ -59,7 +58,6 @@ body {
     height: 100px;
     margin: 24px 7px 22px 10px;
 }
-
 
 
 @media (max-width: 380px) {
