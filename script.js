@@ -97,7 +97,7 @@ function virarcarta(cardindex) {
     back_face.style.transform = "rotateY(-180deg)"
     posicaoCarta[cardindex] = "faceup_g"
     } else {
-        front_face.style.transform = "rotateY(-180deg)"
+        front_face.style.transform = "rotateY(180deg)"
         back_face.style.transform = "rotateY(0deg)"
         posicaoCarta[cardindex] = "facedown"
     }
@@ -114,28 +114,28 @@ function jogar(cardindex) {
             virarcarta(cardindex);
             posicaoCarta[cardindex] = "faceup_g"
         }
-        else if (repeticoes_array(posicaoCarta, 'faceup_g') == 1){
+        else if (repeticoes_array(posicaoCarta, "faceup_g") == 1){
 
-            let lastguess = posicaoCarta.indexOf('faceup_g')
+            let lastguess = posicaoCarta.indexOf("faceup_g")
 
             if (imagemCarta[cardindex].src == imagemCarta[lastguess].src){
                 virarcarta(cardindex);
-                posicaoCarta[lastguess] = 'faceup_c';
-                posicaoCarta[cardindex] = 'faceup_c';
+                posicaoCarta[lastguess] = "faceup_c";
+                posicaoCarta[cardindex] = "faceup_c";
         }
         else{
             virarcarta(cardindex);
-            posicaoCarta[cardindex] = 'faceup_g';
+            posicaoCarta[cardindex] = "faceup_g";
             setTimeout(function(){
                 virarcarta(lastguess);
                 virarcarta(cardindex);
-                posicaoCarta[lastguess] = 'facedown';
-                posicaoCarta[cardindex] = 'facedown';
+                posicaoCarta[lastguess] = "facedown";
+                posicaoCarta[cardindex] = "facedown";
             }, 1000);
 }
 }
     setTimeout(function(){
-    if (repeticoes_array(posicaoCarta, 'faceup_c') == posicaoCarta.length){
+    if (repeticoes_array(posicaoCarta, "faceup_c") == posicaoCarta.length){
             alert(`Voce ganhou em ${numeroJogadas} jogadas!`);
         }
     }, 500);
