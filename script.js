@@ -5,9 +5,12 @@ let numeroJogadas = 0;
 let numeroCartas;
 let posicaoCarta = [];
 
+
 const mesa = document.querySelector(".mesa");
 let cartas_mesa;
 let imagemCarta;
+let back_face;
+let front_face;
 
 //
 
@@ -21,7 +24,6 @@ while (numeroCartas % 2 != 0 || numeroCartas < 4 || numeroCartas > 14) {
 return numeroCartas
 }
 getNmrCards()
-
 
 //
 
@@ -52,7 +54,7 @@ function darCartas() {
 
     for(let i = 0; numeroCartas > i; i++){
 
-        mesa.innerHTML += `<div onclick="jogar(${i})" class="card" data-identifier="card">
+        mesa.innerHTML += `<div onclick="play(${i})" class="card" data-identifier="card">
         <div class="back-face card-face" data-identifier="back-face">
             <img src="./fotos/front.png" alt="">
         </div>
@@ -89,23 +91,24 @@ function iniciarJogo() {
 //
 
 function virarcarta(cardindex) {
-    let back_face = cartas_mesa[cardindex].querySelector(".back-face");
-    let front_face = cartas_mesa[cardindex].querySelector(".front-face");
+    back_face = cartas_mesa[cardindex].querySelector(".back-face");
+    front_face = cartas_mesa[cardindex].querySelector(".front-face");
 
     if (posicaoCarta[cardindex] == "facedown"){
     front_face.style.transform = "rotateY(0deg)"
     back_face.style.transform = "rotateY(-180deg)"
     posicaoCarta[cardindex] = "faceup_g"
-    } else {
+    } 
+    else{
         front_face.style.transform = "rotateY(180deg)"
         back_face.style.transform = "rotateY(0deg)"
         posicaoCarta[cardindex] = "facedown"
     }
-}
+}   
 
 //
 
-function jogar(cardindex) {
+function play(cardindex) {
 
     if(posicaoCarta[cardindex] == "facedown"){
         numeroJogadas += 1
@@ -122,6 +125,9 @@ function jogar(cardindex) {
                 virarcarta(cardindex);
                 posicaoCarta[lastguess] = "faceup_c";
                 posicaoCarta[cardindex] = "faceup_c";
+                cartas_mesa[lastguess].style.opacity="0.2"
+                cartas_mesa[cardindex].style.opacity="0.2"
+                
         }
         else{
             virarcarta(cardindex);
@@ -131,14 +137,41 @@ function jogar(cardindex) {
                 virarcarta(cardindex);
                 posicaoCarta[lastguess] = "facedown";
                 posicaoCarta[cardindex] = "facedown";
-            }, 1000);
-}
+            }, 650);
+    }
 }
     setTimeout(function(){
     if (repeticoes_array(posicaoCarta, "faceup_c") == posicaoCarta.length){
             alert(`Voce ganhou em ${numeroJogadas} jogadas!`);
+            replay()
+            }
+        }, 2000);
+
+    }
+}
+
+//
+
+function replay() {
+        let resposta = prompt("Quer jogar novamente? (sim/não)")
+
+        if (resposta == "sim") {
+            mesa.innerHTML = "";
+            posicaoCarta = [];
+            numeroJogadas = 0;
+            getNmrCards();
+            darCartas();
+            iniciarJogo();
+        } 
+        else if (resposta == "não"){
+
         }
-    }, 500);
-}
-}
-iniciarJogo()
+        else {
+            alert(`Resposta inválida.\nResponda com "sim" ou "não".`);
+            replay();
+        }
+    }
+
+//
+
+iniciarJogo()   

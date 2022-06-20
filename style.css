@@ -33,6 +33,7 @@ body {
     margin: 0 20px 34px 20px;
     overflow: hidden;
     cursor: pointer;
+    transition: all .05s;
 }
 
 .card-face {
@@ -43,7 +44,7 @@ body {
     background-color: #A7E9AF;
     border-radius: 5px;
     box-sizing: border-box;
-    transition: all .5s;
+    transition: all .25s;
     transform-style: preserve-3d;
     backface-visibility: hidden;
 }
