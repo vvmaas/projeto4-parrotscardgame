@@ -142,7 +142,7 @@ function play(cardindex) {
 }
     setTimeout(function(){
     if (repeticoes_array(posicaoCarta, "faceup_c") == posicaoCarta.length){
-            alert(`Voce ganhou em ${numeroJogadas} jogadas!`);
+            alert(`Voce ganhou em aproximadamente ${numeroJogadas} jogadas!`);
             replay()
             }
         }, 2000);
